@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Replies | Professional Multilingual Google Review Management</title>
+    <meta name="description" content="We reply to all your Google reviews within 24 hours, in whatever language your guest wrote. $200/month. No contract.">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1240a8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --accent: #059669;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; background: var(--bg); z-index: 10;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-cta {
+            background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); }
+
+        /* Hero */
+        .hero { padding: 80px 0 60px; text-align: center; }
+        .hero h1 { font-size: 42px; line-height: 1.2; max-width: 700px; margin: 0 auto 20px; }
+        .hero .subtitle { font-size: 20px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
+        .hero .price-badge {
+            display: inline-block; background: var(--bg-alt); border: 2px solid var(--primary);
+            border-radius: 50px; padding: 12px 28px; font-size: 18px; font-weight: 600;
+        }
+        .hero .price-badge span { color: var(--primary); font-size: 28px; }
+
+        /* Stats bar */
+        .stats {
+            background: var(--primary); color: #fff; padding: 32px 0;
+        }
+        .stats .container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+        .stat { text-align: center; }
+        .stat .number { font-size: 36px; font-weight: 800; }
+        .stat .label { font-size: 14px; opacity: 0.85; }
+
+        /* Section */
+        section { padding: 60px 0; }
+        section.alt { background: var(--bg-alt); }
+        .section-title { font-size: 30px; text-align: center; margin-bottom: 12px; }
+        .section-subtitle { font-size: 16px; color: var(--text-light); text-align: center; max-width: 600px; margin: 0 auto 40px; }
+
+        /* How it works */
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+        .step { text-align: center; padding: 24px; }
+        .step .num {
+            width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: #fff;
+            display: inline-flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; margin-bottom: 16px;
+        }
+        .step h3 { margin-bottom: 8px; font-size: 18px; }
+        .step p { color: var(--text-light); font-size: 14px; }
+
+        /* Languages */
+        .lang-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+        .lang-tag {
+            background: #fff; border: 1px solid var(--border); border-radius: 50px;
+            padding: 8px 20px; font-size: 14px; font-weight: 500;
+        }
+
+        /* Testimonials / Demo */
+        .reviews { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .review-card {
+            background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+        }
+        .review-card .guest-review {
+            background: var(--bg-alt); border-radius: 8px; padding: 16px; margin-bottom: 16px;
+            font-style: italic; color: var(--text-light); font-size: 14px;
+        }
+        .review-card .guest-review .lang {
+            display: inline-block; background: var(--primary); color: #fff; font-size: 11px;
+            padding: 2px 8px; border-radius: 4px; font-style: normal; margin-bottom: 8px; font-weight: 600;
+        }
+        .review-card .our-reply { font-size: 14px; }
+        .review-card .our-reply .badge {
+            display: inline-block; background: #ecfdf5; color: var(--accent); font-size: 11px;
+            padding: 2px 8px; border-radius: 4px; font-weight: 600; margin-bottom: 8px;
+        }
+        .review-card .stars { color: #f59e0b; margin-bottom: 4px; }
+
+        /* Pricing */
+        .pricing-box {
+            max-width: 480px; margin: 0 auto; background: #fff; border: 2px solid var(--primary);
+            border-radius: 16px; padding: 40px; text-align: center;
+        }
+        .pricing-box .price { font-size: 48px; font-weight: 800; color: var(--primary); }
+        .pricing-box .period { font-size: 18px; color: var(--text-light); }
+        .pricing-box ul { list-style: none; text-align: left; margin: 24px 0; }
+        .pricing-box ul li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+        .pricing-box ul li::before { content: "\2713"; color: var(--accent); font-weight: 700; margin-right: 10px; }
+        .cta-btn {
+            display: inline-block; background: var(--primary); color: #fff; padding: 14px 32px;
+            border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: var(--primary-dark); }
+
+        /* Pain points */
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .pain-card { padding: 24px; border-radius: 12px; background: #fff; border: 1px solid var(--border); }
+        .pain-card .stat-big { font-size: 36px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+        .pain-card h3 { margin-bottom: 8px; }
+        .pain-card p { color: var(--text-light); font-size: 14px; }
+
+        /* Footer */
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 14px; }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .stats .container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="#" class="logo">Review Replies</a>
+        <a href="mailto:adrian@reviewreplies.fyi" class="nav-cta">Get Started</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h1>Every Google review answered. Every language. Within 24 hours.</h1>
+        <p class="subtitle">We reply to all your Google reviews in whatever language your guest wrote — French, German, English, Italian, Dutch, and more. So you can focus on running your properties.</p>
+        <div class="price-badge"><span>$200</span>/month &middot; No contract &middot; Cancel anytime</div>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="container">
+        <div class="stat"><div class="number">24h</div><div class="label">Response time</div></div>
+        <div class="stat"><div class="number">10+</div><div class="label">Languages covered</div></div>
+        <div class="stat"><div class="number">100%</div><div class="label">Reviews answered</div></div>
+        <div class="stat"><div class="number">$200</div><div class="label">Flat monthly rate</div></div>
+    </div>
+</div>
+
+<section class="alt">
+    <div class="container">
+        <h2 class="section-title">Why this matters</h2>
+        <p class="section-subtitle">Unanswered reviews cost you bookings. Here's what the data says.</p>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="stat-big">9%</div>
+                <h3>Lost bookings per unanswered review</h3>
+                <p>Guests research before they book. Unanswered reviews signal neglect — and every one costs you up to 9% of potential revenue.</p>
+            </div>
+            <div class="pain-card">
+                <div class="stat-big">89%</div>
+                <h3>Of guests prefer responsive businesses</h3>
+                <p>89% of consumers say they're more likely to use a business that responds to all reviews, positive and negative.</p>
+            </div>
+            <div class="pain-card">
+                <div class="stat-big">&lt;30%</div>
+                <h3>Average reply rate for property managers</h3>
+                <p>Most holiday rental managers reply to fewer than 30% of their Google reviews. Multilingual reviews? Almost never.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-subtitle">Three simple steps. No technical setup needed.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="num">1</div>
+                <h3>Share your Google Business link</h3>
+                <p>Send us your Google Business Profile URL. That's all we need to get started.</p>
+            </div>
+            <div class="step">
+                <div class="num">2</div>
+                <h3>We monitor and reply daily</h3>
+                <p>We check your reviews every day and craft professional replies in the guest's own language within 24 hours.</p>
+            </div>
+            <div class="step">
+                <div class="num">3</div>
+                <h3>You get more bookings</h3>
+                <p>A fully-responded review profile builds trust and drives more bookings. We send you a monthly report.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="container">
+        <h2 class="section-title">See it in action</h2>
+        <p class="section-subtitle">Real guest reviews, professional replies in the guest's language.</p>
+        <div class="reviews">
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="guest-review">
+                    <span class="lang">German</span>
+                    <p>"Tolle Wohnung mit Meerblick, alles war sauber und der Check-in hat super geklappt."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>Vielen Dank f&uuml;r Ihre wunderbare Bewertung! Es freut uns sehr, dass Sie den Meerblick und die reibungslose Ankunft genossen haben. Wir w&uuml;rden uns freuen, Sie bei Ihrem n&auml;chsten Urlaub wieder bei uns begr&uuml;&szlig;en zu d&uuml;rfen!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <div class="guest-review">
+                    <span class="lang">French</span>
+                    <p>"Appartement id&eacute;al pour une famille, tr&egrave;s bien situ&eacute; dans le quartier de Gr&agrave;cia. Les enfants ont ador&eacute; la terrasse."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>Merci beaucoup pour ce retour chaleureux ! Nous sommes ravis que toute la famille ait pass&eacute; un excellent s&eacute;jour. N'h&eacute;sitez pas &agrave; revenir lors de votre prochain passage &agrave; Barcelone !</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <div class="guest-review">
+                    <span class="lang">Dutch</span>
+                    <p>"Mooi appartement met uitzicht op de Teide. Het zwembad was heerlijk. Enige minpuntje: de keuken miste een paar basisspullen."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>Hartelijk dank voor uw fijne review! Wat geweldig dat u heeft genoten van het uitzicht en het zwembad. We nemen uw opmerking over de keukenuitrusting serieus en zorgen ervoor dat alles wordt aangevuld!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="guest-review">
+                    <span class="lang">Italian</span>
+                    <p>"Casa fantastica a due passi dalla spiaggia di Cala Gonone. Pulizia impeccabile, e il tramonto visto dal balcone non ha prezzo."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>Grazie mille per la sua splendida recensione! Cala Gonone &egrave; davvero un gioiello della Sardegna e siamo felicissimi che abbia apprezzato la pulizia e il tramonto dal balcone. Sar&agrave; un piacere riaverla come ospite!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="guest-review">
+                    <span class="lang">English</span>
+                    <p>"Great apartment, really close to the beach. Only minor issue was the WiFi dropping occasionally."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>Thank you so much for your kind feedback! We're glad you enjoyed the beachside location. We've flagged the WiFi issue with our maintenance team and are working on an upgrade. We'd love to welcome you back!</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="guest-review">
+                    <span class="lang">Greek</span>
+                    <p>"&#917;&#958;&#945;&#953;&#961;&#949;&#964;&#953;&#954;&#942; &#946;&#943;&#955;&#945; &#963;&#964;&#951;&#957; &#913;&#952;&#951;&#957;&#945;&#970;&#954;&#942; &#929;&#953;&#946;&#953;&#941;&#961;&#945;. &#922;&#945;&#952;&#945;&#961;&#972;&#964;&#945;&#964;&#951;, &#956;&#959;&#957;&#964;&#941;&#961;&#957;&#945; &#954;&#945;&#953; &#956;&#949; &#945;&#960;&#943;&#963;&#964;&#949;&#965;&#964;&#951; &#952;&#941;&#945;."</p>
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our reply &middot; &lt;24h</span>
+                    <p>&#931;&#945;&#962; &#949;&#965;&#967;&#945;&#961;&#953;&#963;&#964;&#959;&#973;&#956;&#949; &#960;&#959;&#955;&#973; &#947;&#953;&#945; &#964;&#945; &#965;&#960;&#941;&#961;&#959;&#967;&#945; &#955;&#972;&#947;&#953;&#945; &#963;&#945;&#962;! &#935;&#945;&#953;&#961;&#972;&#956;&#945;&#963;&#964;&#949; &#953;&#948;&#953;&#945;&#943;&#964;&#949;&#961;&#945; &#960;&#959;&#965; &#945;&#960;&#959;&#955;&#945;&#973;&#963;&#945;&#964;&#949; &#964;&#951; &#952;&#941;&#945; &#954;&#945;&#953; &#964;&#951;&#957; &#954;&#945;&#952;&#945;&#961;&#953;&#972;&#964;&#951;&#964;&#945;. &#920;&#945; &#949;&#943;&#957;&#945;&#953; &#967;&#945;&#961;&#940; &#956;&#945;&#962; &#957;&#945; &#963;&#945;&#962; &#965;&#960;&#959;&#948;&#949;&#967;&#964;&#959;&#973;&#956;&#949; &#958;&#945;&#957;&#940;!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Languages we cover</h2>
+        <p class="section-subtitle">Your guests write in their language. We reply in it.</p>
+        <div class="lang-grid">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">German</span>
+            <span class="lang-tag">French</span>
+            <span class="lang-tag">Spanish</span>
+            <span class="lang-tag">Italian</span>
+            <span class="lang-tag">Dutch</span>
+            <span class="lang-tag">Portuguese</span>
+            <span class="lang-tag">Greek</span>
+            <span class="lang-tag">Croatian</span>
+            <span class="lang-tag">Danish</span>
+            <span class="lang-tag">Swedish</span>
+            <span class="lang-tag">Norwegian</span>
+            <span class="lang-tag">Polish</span>
+            <span class="lang-tag">Czech</span>
+            <span class="lang-tag">Finnish</span>
+            <span class="lang-tag">+ any other language</span>
+        </div>
+    </div>
+</section>
+
+<section class="alt">
+    <div class="container">
+        <h2 class="section-title">Simple pricing</h2>
+        <p class="section-subtitle">One plan. Everything included.</p>
+        <div class="pricing-box">
+            <div class="price">$200</div>
+            <div class="period">per month</div>
+            <ul>
+                <li>All Google reviews answered within 24 hours</li>
+                <li>Every language your guests write in</li>
+                <li>Professional, on-brand tone</li>
+                <li>Negative review handling included</li>
+                <li>Monthly performance report</li>
+                <li>No contract &mdash; cancel anytime</li>
+                <li>Unlimited reviews</li>
+            </ul>
+            <a href="mailto:adrian@reviewreplies.fyi?subject=I%27d%20like%20to%20try%20Review%20Replies&body=Hi%20Adrian%2C%0A%0AI%27m%20interested%20in%20your%20review%20reply%20service.%20Here%27s%20my%20Google%20Business%20Profile%20link%3A%20%5Bpaste%20here%5D%0A%0AThanks!" class="cta-btn">Get started &mdash; send us your Google Business link</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Built for holiday rental managers</h2>
+        <p class="section-subtitle">We understand the unique challenges of managing reviews across multiple properties and languages in the European holiday rental market.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="num" style="background: var(--accent);">&#10003;</div>
+                <h3>Multi-property support</h3>
+                <p>Whether you manage 10 or 10,000 properties, we handle reviews for all your Google Business listings.</p>
+            </div>
+            <div class="step">
+                <div class="num" style="background: var(--accent);">&#10003;</div>
+                <h3>Season-aware responses</h3>
+                <p>We adapt tone and content to high and low seasons, addressing common seasonal feedback patterns.</p>
+            </div>
+            <div class="step">
+                <div class="num" style="background: var(--accent);">&#10003;</div>
+                <h3>Issue escalation</h3>
+                <p>When a review flags a real operational issue, we alert you immediately so you can act fast.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><strong>Review Replies</strong> &mdash; Professional multilingual Google review management for holiday rental managers.</p>
+        <p style="margin-top: 8px;">Questions? Email <a href="mailto:adrian@reviewreplies.fyi">adrian@reviewreplies.fyi</a></p>
+        <p style="margin-top: 16px; font-size: 12px; color: #94a3b8;">&copy; 2026 Review Replies. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
