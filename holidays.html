@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Rentals | Review Replies</title>
+    <meta name="description" content="Professional multilingual Google review management for holiday rental managers. Replies in 24 hours, any language. $99/month.">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #1240a8;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --accent: #059669;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; background: var(--bg); z-index: 10;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 700; color: var(--primary); text-decoration: none; }
+        .nav-link { color: var(--text); text-decoration: none; margin-right: 24px; font-size: 14px; }
+        .nav-link:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: 14px; transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--primary-dark); }
+
+        /* Hero */
+        .hero { padding: 80px 0 60px; text-align: center; }
+        .hero h1 { font-size: 42px; line-height: 1.2; max-width: 700px; margin: 0 auto 20px; }
+        .hero .subtitle { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
+        .hero .price-badge {
+            display: inline-block; background: var(--bg-alt); border: 2px solid var(--primary);
+            border-radius: 50px; padding: 12px 28px; font-size: 18px; font-weight: 600;
+        }
+        .hero .price-badge span { color: var(--primary); font-size: 28px; }
+
+        /* Pain points */
+        .pain-points {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;
+            margin: 40px 0;
+        }
+        .pain-point {
+            background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+        }
+        .pain-point h3 { margin-bottom: 8px; font-size: 18px; }
+        .pain-point p { color: var(--text-light); font-size: 14px; }
+
+        /* Section */
+        section { padding: 60px 0; }
+        section.alt { background: var(--bg-alt); }
+        .section-title { font-size: 32px; text-align: center; margin-bottom: 12px; }
+        .section-subtitle { font-size: 16px; color: var(--text-light); text-align: center; max-width: 700px; margin: 0 auto 40px; }
+
+        /* How it works */
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+        .step { text-align: center; padding: 24px; }
+        .step .num {
+            width: 48px; height: 48px; border-radius: 50%; background: var(--primary); color: #fff;
+            display: inline-flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; margin-bottom: 16px;
+        }
+        .step h3 { margin-bottom: 8px; font-size: 18px; }
+        .step p { color: var(--text-light); font-size: 14px; }
+
+        /* Demo */
+        .review-card {
+            background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+            margin-bottom: 24px;
+        }
+        .review-card .guest-review {
+            background: var(--bg-alt); border-radius: 8px; padding: 16px; margin-bottom: 16px;
+            font-style: italic; color: var(--text-light); font-size: 14px;
+        }
+        .review-card .guest-review .lang {
+            display: inline-block; background: var(--primary); color: #fff; font-size: 11px;
+            padding: 2px 8px; border-radius: 4px; font-style: normal; margin-bottom: 8px; font-weight: 600;
+        }
+        .review-card .our-reply { font-size: 14px; }
+        .review-card .our-reply .badge {
+            display: inline-block; background: #ecfdf5; color: var(--accent); font-size: 11px;
+            padding: 2px 8px; border-radius: 4px; font-weight: 600; margin-bottom: 8px;
+        }
+
+        /* CTA */
+        .cta-section { text-align: center; padding: 60px 0; }
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .cta-button:hover { background: var(--primary-dark); }
+
+        /* Footer */
+        footer { background: var(--bg-alt); padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 32px; }
+            .hero .subtitle { font-size: 16px; }
+            .pain-points { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Review Replies</a>
+            <div style="display: flex; align-items: center;">
+                <a href="/" class="nav-link">Back to hub</a>
+                <a href="mailto:adrian@reviewreplies.fyi?subject=Holiday%20Rental%20Review%20Management&body=Hi%20Adrian%2C%0A%0AI%27m%20interested%20in%20your%20review%20reply%20service.%20Here%27s%20my%20Google%20Business%20Profile%20link%3A%20%5Bpaste%20here%5D%0A%0AThanks!" class="nav-cta">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Manage Multi-Language Reviews Across Properties</h1>
+            <p class="subtitle">Your guests leave reviews in German, English, French, Italian. We reply in all of them. Within 24 hours.</p>
+            <div class="price-badge">
+                <span>$99</span>/month
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">The Challenge</h2>
+            <p class="section-subtitle">Holiday rental managers face a unique problem</p>
+
+            <div class="pain-points">
+                <div class="pain-point">
+                    <h3>🌍 Language Chaos</h3>
+                    <p>Guests from across Europe leave reviews in 5+ languages. Translation tools are spotty. Manual replies take forever.</p>
+                </div>
+                <div class="pain-point">
+                    <h3>📱 Volume Overwhelm</h3>
+                    <p>One property gets 2-10 reviews per month. Multi-property managers? 50+ reviews monthly. Who has time?</p>
+                </div>
+                <div class="pain-point">
+                    <h3>📊 Lost Bookings</h3>
+                    <p>Studies show 89% of travelers check reviews. Unanswered reviews cost you roughly 9% of bookings.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="alt">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps from setup to live replies</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="num">1</div>
+                    <h3>Connect</h3>
+                    <p>Send us your Google Business links</p>
+                </div>
+                <div class="step">
+                    <div class="num">2</div>
+                    <h3>Review</h3>
+                    <p>We check your recent reviews and language patterns</p>
+                </div>
+                <div class="step">
+                    <div class="num">3</div>
+                    <h3>Reply</h3>
+                    <p>Professional replies in any language, 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section>
+            <h2 class="section-title">Example Replies</h2>
+            <p class="section-subtitle">This is what we deliver for your guests</p>
+
+            <div class="review-card">
+                <div class="guest-review">
+                    <span class="lang">German</span>
+                    "Schöne Wohnung mit toller Aussicht. Die Vermieterin war sehr freundlich und hilfsbereit."
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our Reply</span>
+                    <p>Vielen Dank für dein Feedback! Wir freuen uns, dass dir die Aussicht und die Gastfreundschaft unserer Gastgeberin gefallen haben. Dein nächster Besuch ist schon geplant? 😊</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="guest-review">
+                    <span class="lang">Italian</span>
+                    "Bellissimo appartamento, posizione perfetta, tornerò sicuramente. Consiglio vivamente!"
+                </div>
+                <div class="our-reply">
+                    <span class="badge">Our Reply</span>
+                    <p>Grazie mille per le tue belle parole! Siamo felicissimi che ti sia piaciuto il nostro appartamento e la sua posizione. Non vediamo l'ora di accoglierti di nuovo! ❤️</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to see sample replies for your reviews?</h2>
+            <p style="color: var(--text-light); margin-bottom: 24px;">Send us your Google Business link and we'll show you exactly what we'd write for your guests.</p>
+            <a href="mailto:adrian@reviewreplies.fyi?subject=Holiday%20Rental%20Review%20Management&body=Hi%20Adrian%2C%0A%0AI%27m%20interested%20in%20your%20review%20reply%20service.%20Here%27s%20my%20Google%20Business%20Profile%20link%3A%20%5Bpaste%20here%5D%0A%0AThanks!" class="cta-button">Send us your Google Business link</a>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Review Replies. All rights reserved. | <a href="/terms.html" style="color: var(--primary);">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
